@@ -1,0 +1,17 @@
+title = "Profile"
+url = "/profile"
+layout = "angular-layout"
+description = "Sign In, Registration, and Account Management"
+is_hidden = "0"
+
+[account]
+redirect = "account"
+paramCode = "code"
+==
+<div class="container">
+    <div class="jumbotron">
+        <h2>{{this.page.title}}</h2>
+        <strong>{{this.page.description}}</strong>
+    </div>
+{% component "account" %}    
+</div>

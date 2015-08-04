@@ -1,0 +1,58 @@
+[staticPage]
+
+
+[staticMenu mainMenu]
+code = "main-menu"
+
+[getRequestHeader]
+==
+{% if getRequestHeader.hasHeader('X-Requested-With') == "XMLHttpRequest" %} 
+        {% page %}
+{% else %}
+
+<html ng-app="sjae-core" ng-controller="MainController">
+    <head>
+        <title>{{ staticPage.title }}</title>
+        <base href="/">
+        <meta name=viewport content="width=device-width, initial-scale=1">
+        
+        <!-- build:css(.) dist/app.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="app/components/bootswatch-dist/css/bootstrap.css" />
+        <!-- endbower -->
+        <link rel="stylesheet" href="themes/demo/assets/css/style.css" />
+        <!-- endbuild -->
+        
+    </head>
+    <body style="display: none">
+        
+        {% component 'mainMenu' %}
+        
+            {# {{mainMenu.menuItems | json_encode}} #}
+        
+        
+        <section id="layout-content">
+            
+            
+            <div id="content" ui-view>{% page %}</div>
+        </section>
+            {% partial 'footer.htm' %}
+    </body>
+    <!-- build:js(.) dist/app.min.js -->
+    	<!-- bower:js -->
+    	<script src="app/components/jquery/dist/jquery.js"></script>
+    	<script src="app/components/angular/angular.js"></script>
+    	<script src="app/components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    	<script src="app/components/angular-ui-router/release/angular-ui-router.js"></script>
+    	<script src="app/components/mcc-angular-core/dist/app.js"></script>
+    	<script src="app/components/bootstrap/dist/js/bootstrap.js"></script>
+    	<script src="app/components/angular-route/angular-route.js"></script>
+    	<!-- endbower -->
+        
+    <!-- endbuild -->
+
+    
+    
+</html>
+
+{% endif %}

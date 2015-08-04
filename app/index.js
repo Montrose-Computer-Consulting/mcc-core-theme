@@ -1,0 +1,1 @@
+angularApp = angular.module('sjae-core', ['']);

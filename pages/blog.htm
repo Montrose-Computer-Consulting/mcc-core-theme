@@ -1,0 +1,59 @@
+title = "blog"
+url = "/blog"
+layout = "angular-layout"
+is_hidden = "0"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = "10"
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "404"
+postPage = "404"
+
+[getRequestHeader]
+
+
+[setResponseHeader]
+==
+{% if getRequestHeader.hasHeader('X-Requested-With') == "XMLHttpRequest" and getRequestHeader.hasHeader('mcc-json-request') %} {# json-request-profile #}
+    
+    {{ setResponseHeader.setPageResponseType('json') }}
+    {{ setResponseHeader.sendJsonResponse(posts.toJson) }}
+{% elseif getRequestHeader.hasHeader('X-Requested-With') == "XMLHttpRequest" %} {# template request profile #}
+<div class="container">
+        {% verbatim %}
+        <script type="text/ng-template" id="blogPostsTemplate.htm">
+        
+        
+        <div ng-repeat="(key, post) in blogPosts.data track by $index">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                {{post.title}}
+                </div>
+                <div ng-bind-html="post.content_html" class="panel-body">
+                    
+                </div>
+            </div>
+        </div>    
+        </script>
+        {% endverbatim %}
+        <h2>Recent Blog Posts</h2>
+        <blog-posts-template></blog-posts-template>
+</div>
+    
+{% else %}
+<div class="container">
+<h2>Recent Blog Posts</h2>
+{% for post in posts.toArray().data %}
+    <div class="panel panel-primary">
+                <div class="panel-heading">
+                {{post.title}}
+                </div>
+                <div class="panel-body">
+                    {{post.content_html | raw}}
+                </div>
+            </div>
+{% endfor %}    
+</div>
+{% endif %}

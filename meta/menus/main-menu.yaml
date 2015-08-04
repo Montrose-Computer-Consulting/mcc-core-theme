@@ -1,0 +1,43 @@
+name: 'Main Menu'
+items:
+    -
+        title: Home
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: menu
+        reference: home
+        cmsPage: ''
+        replace: ''
+    -
+        title: Services
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: services
+        cmsPage: ''
+        replace: ''
+    -
+        title: Packages
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: packages
+        cmsPage: ''
+        replace: ''
+    -
+        title: 'Client Portal'
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: account
+        cmsPage: ''
+        replace: ''
+    -
+        title: Blog
+        type: cms-page
+        code: ''
+        reference: blog
