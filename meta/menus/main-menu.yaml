@@ -1,0 +1,11 @@
+name: 'Main Menu'
+items:
+    -
+        title: Home
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: blog
+        cmsPage: ''
+        replace: ''

@@ -1,0 +1,19 @@
+[viewBag]
+==
+{% set epsettings = __SELF__.epsettings %}
+
+{% for name, prop in epsettings %}    
+<div class="row">
+    <div class="col-md-2">
+        <h4>{{ prop.label }}:</h4>
+    </div>
+    <div class="col-md-10">
+        <p id="extended-info">
+        {{ prop.value }}
+        </p>
+    </tr>
+    </div>
+</div>
+<br />
+{% endfor %}
+</table>

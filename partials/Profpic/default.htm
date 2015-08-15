@@ -1,0 +1,23 @@
+[viewBag]
+
+
+[session]
+security = "all"
+==
+<div class="row">
+    <div class="col-md-11">
+        <div id="prof-pic">
+            {% partial __SELF__~'::avatardisplay' %}
+        </div>    
+    </div>
+    <div class="col-md-1">
+        <button
+            class="btn btn-primary"
+            title="Edit"
+            data-request-data="user_id: {{ user.id }}"
+            data-request="onAvatarForm" 
+            data-request-update="'Profpic::avatarupdate': '#prof-pic'">
+            Edit <i class="icon-pencil btn-icon danger"></i>
+        </button>
+    </div>
+</div>

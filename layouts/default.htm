@@ -1,0 +1,103 @@
+description = "Default layout"
+
+[staticBreadcrumbs]
+
+
+[staticMenu]
+code = "main-menu"
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>gfcds '95 - {{ this.page.title }}</title>
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        <meta name="author" content="Montrose Computer Consulting">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="{{ 'assets/images/october.png'|theme }}" />
+        {% styles %}
+        <!-- <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="assets/css/main.css" rel="stylesheet" type="text/css"> -->
+        <link href="/app/components/chefpaul-theme/dist/app.css" rel="stylesheet">
+        
+    </head>
+    <body>
+
+        
+        <header id="layout-header">
+        {#<!-- Header -->{% component 'staticMenu' %}#}
+            <!-- Nav -->
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+                            <span class="sr-only">Toggle Navigation</span>
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a href="/" class="navbar-brand">
+                            gfcds '95
+                        </a>
+                    </div>
+                    <div id="main-nav" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="{% if this.page.id == 'home' %}active{% endif %}"><a href="{{ 'home'|page }}">Home</a></li>
+                            <li class="{% if this.page.id == 'blog' %}active{% endif %}"><a href="{{ 'blog'|page }}">Blog</a></li>
+                            <li class="{% if this.page.id == 'forum' %}active{% endif %}"><a href="{{ 'forum'|page }}">Forum </a></li>
+                            <li class="{% if this.page.id == 'account' %}active{% endif %}"><a href="{{ 'account'|page }}">Account </a></li>
+                            <li class="{% if this.page.id == 'my-profile' %}active{% endif %}"><a href="{{ 'my-profile'|page }}">Profile </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+            
+            <div class="page-header">
+                <div class="container">
+                    <h1 class="page-title pull-left">{{ this.page.title }}</h1>
+                    {% component 'staticBreadcrumbs' %}        
+                </div>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <section id="layout-content">
+            <div class="container">
+                <div class="page-content">
+
+                {% page %}    
+                
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="layout-footer">
+            {% partial "footer" %}
+        </footer>
+
+        <!-- Scripts -->
+        <script src="{{ [
+            'assets/javascript/jquery.js',
+            'assets/javascript/plugins/isotope/isotope.pkgd.min.js',
+            'assets/javascript/repute-scripts.js',
+            'assets/vendor/bootstrap/js/transition.js',
+            'assets/vendor/bootstrap/js/alert.js',
+            'assets/vendor/bootstrap/js/button.js',
+            'assets/vendor/bootstrap/js/carousel.js',
+            'assets/vendor/bootstrap/js/collapse.js',
+            'assets/vendor/bootstrap/js/dropdown.js',
+            'assets/vendor/bootstrap/js/modal.js',
+            'assets/vendor/bootstrap/js/tooltip.js',
+            'assets/vendor/bootstrap/js/popover.js',
+            'assets/vendor/bootstrap/js/scrollspy.js',
+            'assets/vendor/bootstrap/js/tab.js',
+            'assets/vendor/bootstrap/js/affix.js',
+            'assets/javascript/app.js'
+        ]|theme }}"></script>
+        {% framework extras %}
+        {% scripts %}
+
+    </body>
+</html>

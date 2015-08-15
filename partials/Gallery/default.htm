@@ -1,0 +1,53 @@
+description = "override gallery"
+
+[viewBag]
+==
+{% set avatars = __SELF__.avatars %}
+{% set curgr = '' %}
+
+<div class="container">
+				<!-- ITEM FILTERS -->
+	<ul class="list-inline portfolio-item-filters">
+	    <li>
+						<a class="active" href="#" data-filter="*">ALL</a>
+					</li>
+					<li>
+						<a href="#" data-filter=".Members">Class Members</a>
+					</li>
+					<li>
+						<a href="#" data-filter=".hospitality">hospitality</a>
+					</li>
+					<li>
+						<a href="#" data-filter=".Many.Thanks">many thanks</a>
+					</li>
+	</ul>
+   <!-- PORTFOLIO ITEM WRAPPER -->
+	<div class="portfolio-item-wrapper">
+	    <ul class="portfolio-item-list portfolio-isotope portfolio-nospace list-col-4">
+    	    {%for person in people %}
+    	        {% if attribute(avatars, person.id) is defined %}
+                    {% set groups = '' %}
+                    {% for group in person.groups %}
+                        {% set groups = groups ~ ' ' ~ group.name %}
+                    {% endfor %}
+        	        <li class="portfolio-item {{groups}}">
+        	            <div class="overlay"></div>
+        				<div class="info">
+        					<h4 class="title">{{ person.name }}</h4>
+        					<p class="brief-description">{{ person.surname }}</p>
+        					
+        				</div>
+        				<div class="media-wrapper">
+        					 <img src="{{ attribute(avatars, person.id).t200 }}" alt="{{ attribute(avatars, person.id).filename }}" />
+        				</div>
+        	        </li>    
+            	{% endif %}
+    	    {% endfor %}
+	    </ul>
+	</div>
+</div>
+
+
+{% if people %}
+    {% partial __SELF__ ~ "::pagination" %}
+{% endif %}

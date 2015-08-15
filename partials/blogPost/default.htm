@@ -1,0 +1,88 @@
+description = "overrides default blog post view"
+
+[viewBag]
+
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = "0"
+categoryPage = "blog/category"
+==
+{% set post = __SELF__.post %}
+
+<div class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="blog single full-thumbnail">
+                    <article class="entry-post">
+                        <header class="entry-header">
+                            <h2 class="entry-title">
+                                <a href="{{post.url}}">{{post.title}}</a>
+                            </h2>
+                            <div class="meta-line clearfix">
+								<div class="meta-author-category pull-left">
+									<span class="post-author">by <a href="#">{{post.user.login}}</a></span>
+									<span class="post-category">
+        							    in 
+        							    {% for category in post.categories %}
+                                            <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </span>
+								</div>
+								<!-- <div class="meta-tag-comment pull-right">
+								    <span class="post-tags"><i class="fa fa-tag"></i> <a href="#">story</a>, <a href="#">inspiration</a>, <a href="#">creative</a></span>
+								    <span class="post-comment"><i class="fa fa-comments"></i> <a href="#">3 Comments</a></span>
+								</div> -->
+							</div>
+                        </header>
+                        <div class="entry-content clearfix">
+                            {{post.user}}
+                            <div class="row">
+                                <div class="col-md-3">
+                                  <figure class="featured-image">
+                                      
+        								<a href="blog-single.html">
+        								    <div class="post-date-info clearfix"><span class="post-month">{{ post.published_at|date('M') }}</span><span class="post-date">{{ post.published_at|date('d') }}</span><span class="post-year">{{ post.published_at|date('Y') }}</span></div>
+        								    
+        								    
+        								        <a href="/profile/"<img src="{{post.user.avatar.path}}" class="img-responsive" alt="featured-image" />
+        								    
+        								    
+        								</a>
+        							</figure>  
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="excerpt">
+							            {{ post.content_html|raw}}        
+							        </div>
+                                </div>
+                            </div>
+							
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="col-md-3">
+                {% component 'blogCategories' %}
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+
+{#{% if post.featured_images.count %}#}
+{#    <div class="featured-images text-center">#}
+{#        {% for image in post.featured_images %}#}
+{#            <p>#}
+{#                <img#}
+{#                    data-src="{{ image.filename }}"#}
+{#                    src="{{ image.path }}"#}
+{#                    alt="{{ image.description }}"#}
+{#                    style="max-width: 100%" />#}
+{#            </p>#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#{% endif %}#}

@@ -1,0 +1,20 @@
+title = "My Profile"
+url = "/profile"
+layout = "default"
+is_hidden = "0"
+
+[ExtendedInfo]
+
+
+[Profpic]
+==
+<div class="row">
+    <div class="col-md-2">
+        <h4>Avatar:</h4>
+    </div>
+    <div class="col-md-10">
+        {% component 'Profpic' %}
+    </div>
+</div>
+<br />
+{% component 'ExtendedInfo' %}
