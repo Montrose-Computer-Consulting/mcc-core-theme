@@ -16,6 +16,10 @@ postPage = "blog/post"
 slug = "{{ :slug }}"
 displayEmpty = "0"
 categoryPage = "blog/category"
+
+[session]
+security = "user"
+redirect = "account"
 ==
 <div class="row">
     {% component 'blogPosts' %}

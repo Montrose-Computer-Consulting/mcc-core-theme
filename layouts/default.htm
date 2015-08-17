@@ -5,6 +5,9 @@ description = "Default layout"
 
 [staticMenu]
 code = "main-menu"
+
+[session]
+security = "all"
 ==
 <!DOCTYPE html>
 <html>
@@ -42,11 +45,25 @@ code = "main-menu"
                     </div>
                     <div id="main-nav" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
+
+                            {% if user %}
                             <li class="{% if this.page.id == 'home' %}active{% endif %}"><a href="{{ 'home'|page }}">Home</a></li>
                             <li class="{% if this.page.id == 'blog' %}active{% endif %}"><a href="{{ 'blog'|page }}">Blog</a></li>
                             <li class="{% if this.page.id == 'forum' %}active{% endif %}"><a href="{{ 'forum'|page }}">Forum </a></li>
+
+                            {% endif %}
                             <li class="{% if this.page.id == 'account' %}active{% endif %}"><a href="{{ 'account'|page }}">Account </a></li>
+
+                            {% if user %}
                             <li class="{% if this.page.id == 'my-profile' %}active{% endif %}"><a href="{{ 'my-profile'|page }}">Profile </a></li>
+
+                            <li>
+                                <a href="#" data-request="onLogout">Log Out </a>
+                            </li>
+
+                            {% endif %}
+
+
                         </ul>
                     </div>
                 </div>

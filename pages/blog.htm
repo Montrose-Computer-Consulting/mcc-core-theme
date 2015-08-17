@@ -10,6 +10,10 @@ noPostsMessage = "No posts found"
 sortOrder = "published_at desc"
 categoryPage = "blog/category"
 postPage = "blog/post"
+
+[session]
+security = "user"
+redirect = "account"
 ==
 <div class="row">
          {% component 'blogPosts' %}  
