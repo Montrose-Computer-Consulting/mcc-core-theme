@@ -1,0 +1,20 @@
+{
+  "name": "greenfields-theme",
+  "version": "v1.0.0",
+  "homepage": "https://github.com/Montrose-Computer-Consulting/mcc-core-theme",
+  "authors": [
+    "Geoff Oslund <geoffreyoslund@gmail.com>"
+  ],
+  "description": "Theme for Greenfields",
+  "keywords": [
+    "Greenfields!"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
