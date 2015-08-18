@@ -1,0 +1,3 @@
+[submodule "assets/chefpaul-theme"]
+	path = assets/chefpaul-theme
+	url = git@github.com:Montrose-Computer-Consulting/mcc-core-theme.git
