@@ -31,6 +31,11 @@ module.exports = function(grunt) {
                 files: {
                     'build/assets/css/app.css': 'build/assets/chefpaul-theme/lib/chefpaul.scss'
                 }
+            },
+            watch: {
+                files: {
+                    'assets/css/app.css': 'assets/chefpaul-theme/lib/chefpaul.scss'
+                }
             }
         },
         concat: {
@@ -76,6 +81,12 @@ module.exports = function(grunt) {
                     }
                 }
             }
+        },
+        watch: {
+            css: {
+                files: ['assets/chefpaul-theme/lib/**/*.scss'],
+                tasks: ['sass:watch']
+            }
         }
     });
     // Load the plugin that provides the "uglify" task.
@@ -86,6 +97,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-usemin');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     // Default task(s).
     grunt.registerTask('dev-build', ['clean:build', 'copy:build', 'sass:dist', 'cssmin:build', 'concat:build', 'uglify', 'usemin', "copy:dist"]);
     grunt.registerTask('dev-clean', ['clean:build']);
